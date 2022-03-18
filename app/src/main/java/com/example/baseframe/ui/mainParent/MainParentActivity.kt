@@ -15,6 +15,7 @@ import timber.log.Timber
 class MainParentActivity : BaseActivity<ActivityMainParentBinding, MainParentViewModel>() {
 
     private var isLogin = false
+
     companion object {
         @JvmStatic
         val ISLOGIN = "ISLOGIN"
@@ -45,7 +46,7 @@ class MainParentActivity : BaseActivity<ActivityMainParentBinding, MainParentVie
 //                arguments = bundle
 //            } else LoginFragment.newInstance()
 
-            loadRootFragment(R.id.container, MainFragment.newInstance())
+        loadRootFragment(R.id.container, MainFragment.newInstance())
 //        }
     }
 
@@ -71,8 +72,4 @@ class MainParentActivity : BaseActivity<ActivityMainParentBinding, MainParentVie
         }
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        Timber.e("监听到了 down  $keyCode")
-        return false
-    }
 }
