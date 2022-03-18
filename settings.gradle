@@ -1,0 +1,4 @@
+include ':app',
+        ':ThirdLibrays:baselibrary',
+        ':ThirdLibrays:videocompressor'
+rootProject.name = "BaseFrame"
