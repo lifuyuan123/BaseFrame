@@ -6,6 +6,7 @@ import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import androidx.paging.LoadState
+import com.example.baseframe.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.hjq.gson.factory.GsonFactory
@@ -123,7 +124,15 @@ fun <T> Gson.formJsons(json: String): T {
 //Pagingadapter公共分页监听
 fun BasePagingDataAdapter<*>.addLoadPageListener(
     smart: SmartRefreshLayout,
-    statePager: StatusPager
+    statePager: StatusPager=StatusPager.builder(smart)
+        .emptyViewLayout(R.layout.state_empty)
+        .loadingViewLayout(R.layout.state_loading)
+        .errorViewLayout(R.layout.state_error)
+        .addRetryButtonId(R.id.btn_retry)
+        .setRetryClickListener { _, _ ->
+            this.refresh()
+        }
+        .build()
 ) {
     this.addLoadStateListener { loadState ->
         val noMoreData = loadState.source.append.endOfPaginationReached

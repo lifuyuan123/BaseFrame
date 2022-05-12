@@ -113,7 +113,7 @@ class TestFragment : BaseFragment<FragmentTestBinding, TestViewModel>() {
         binding.fresh.setEnableLoadMore(true)
         binding.rv.adapter = adapter
         //监听加载状态 加载中  成功  失败
-        adapter.addLoadPageListener(binding.fresh, statePager)
+        adapter.addLoadPageListener(binding.fresh)
 
         // 当从网络刷新列表时滚动到顶部。
         lifecycleScope.launch {
